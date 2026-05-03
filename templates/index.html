@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Analytics</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome cho Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary-color: #4e73df; --secondary-color: #1cc88a; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
+            color: white;
+            padding: 100px 0;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .feature-card:hover { transform: translateY(-10px); }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(78, 115, 223, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .btn-predict {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-4">Student Performance Indicator</h1>
+        <p class="lead mb-5 opacity-75">An end-to-end machine learning project to predict student maths scores.</p>
+        <a href="{{ url_for('predict_datapoint') }}" class="btn btn-light btn-predict text-primary">
+            <i class="fas fa-rocket me-2"></i>Get Started Now
+        </a>
+    </div>
+</header>
+
+<!-- Features Section -->
+<section class="container my-5 py-5">
+    <div class="row g-4 text-center">
+        <!-- Feature 1 -->
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4">
+                <div class="icon-box mx-auto">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h4 class="fw-bold">Data Insights</h4>
+                <p class="text-muted">Analyses exam performance patterns using study‑related features.</p>
+            </div>
+        </div>
+        <!-- Feature 2 -->
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4">
+                <div class="icon-box mx-auto">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h4 class="fw-bold">ML Pipeline</h4>
+                <p class="text-muted">Uses advanced regression models with standardised preprocessing for high accuracy.</p>
+            </div>
+        </div>
+        <!-- Feature 3 -->
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4">
+                <div class="icon-box mx-auto">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h4 class="fw-bold">Instant Results</h4>
+                <p class="text-muted">Get real-time predictions for Math scores based on input parameters.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4 text-muted">
+    <div class="container">
+        <hr>
+        <p>Built with <i class="fas fa-heart text-danger"></i> using Flask, Scikit-Learn & Docker</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
