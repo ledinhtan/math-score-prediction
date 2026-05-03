@@ -3,8 +3,10 @@
 End-to-end machine learning pipeline for predicting student math scores with MLOps practices.
 
 ![Python](https://img.shields.io/badge/python-3.10-3670A0?logo=python&logoColor=ffdd54)
-![Kaggle](https://img.shields.io/badge/Data-Kaggle-20BEFF?logo=kaggle&logoColor=white)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?logo=flask&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?logo=docker&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
+![Infrastructure](https://img.shields.io/badge/Infrastructure-Render-46E3B7?logo=render&logoColor=white)
 
 ---
 
@@ -12,9 +14,7 @@ End-to-end machine learning pipeline for predicting student math scores with MLO
 
 This project is an end-to-end machine learning pipeline for predicting student math performance. It is designed with a modular structure to simulate a production-ready workflow, including data ingestion, preprocessing, model training, and evaluation.
 
-**Tech stack:** Python, scikit-learn, flask
-
-> 🚧 This project is currently under development. Additional features such as a web application and CI/CD pipeline will be added soon.
+**Tech stack:** Python, scikit-learn
 
 ---
 
@@ -32,12 +32,28 @@ This dataset contains 1000 student records with 5 categorical features and 3 num
 
 ---
 
+## ✨ Features
+
+- End-to-end ML pipeline (ingestion → preprocessing → training → evaluation)
+- Modular and production-ready project structure
+- Web application for real-time score prediction
+- CI/CD pipeline using GitHub Actions + Render Deploy Hook
+- Dockerised for consistent deployment
+
+---
+
 ## 🗂️ Repository Structure
 
 ```bash
 math-score-prediction/
+├─ .github/
+│  └─ workflows/
+│     └─ main.yml
 ├─ data/
 │  └─ StudentsPerformance.csv
+├─ models/
+│  ├─ model.pkl
+│  └─ preprocessor.pkl
 ├─ notebooks/
 │  └─ student_performance_eda.ipynb
 ├─ src/
@@ -57,13 +73,23 @@ math-score-prediction/
 ├─ templates/
 │  ├─ home.html
 │  └─ index.html
+├─ .dockerignore
 ├─ .gitignore
 ├─ app.py
+├─ Dockerfile
 ├─ README.md
 ├─ requirements.txt
 └─ setup.py
 ```
 
-> **Note:** `artifacts/` directory is generated at runtime to store `train_dataset.csv`, `test_dataset.csv`, `preprocessor.pkl`, and `model.pkl`, and is excluded from version control.
+> **Note:** `artifacts/` directory is generated at runtime to store `raw_dataset.csv`, `train_dataset.csv`, and `test_dataset.csv`, and is excluded from version control.
 
 ---
+
+## 🔄 CI/CD Pipeline
+
+This project includes a lightweight CI/CD workflow using GitHub Actions and Render Deploy Hook:
+
+- **CI:** Runs on every push to `main`, installs dependencies, and builds the Docker image.
+- **CD:** After CI passes, GitHub Actions triggers Render Deploy Hook to automatically deploy the app.
+- Ensures consistent, automated deployment with no manual steps required.
