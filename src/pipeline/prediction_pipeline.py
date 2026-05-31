@@ -1,32 +1,34 @@
-import os
 import sys
 import pandas as pd
+from src.config.configuration import ConfigurationManager
 from src.exception import CustomException
 from src.utils import load_object
 from src.logger import logging
 
+
 class PredictPipeline:
     def __init__(self):
-        pass
+        self.config = ConfigurationManager()
 
     def predict(self, features):
         try:
-            preprocessor_path = os.path.join('models', "preprocessor.pkl") 
-            model_path = os.path.join("models", "model.pkl") 
-            print("Before Loading")
+            preprocessor_path = self.config.data_transformation_config.preprocessor_object_file_path
+            model_path = self.config.model_trainer_config.trained_model_file_path
+
+            logging.info("Loading preprocessor from %s and model from %s", preprocessor_path, model_path)
             preprocessor = load_object(file_path=preprocessor_path)
             model = load_object(file_path=model_path)
-            print("After Loading")
 
             data_scaled = preprocessor.transform(features)
             preds = model.predict(data_scaled)
 
             return preds
-        
+
         except Exception as e:
             logging.error(CustomException(e, sys))
             raise CustomException(e, sys)
-        
+
+
 class CustomData:
     def __init__(
             self,
