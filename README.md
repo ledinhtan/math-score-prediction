@@ -14,7 +14,7 @@ End-to-end machine learning pipeline for predicting student math scores with MLO
 
 This project is an end-to-end machine learning pipeline for predicting student math performance. It is designed with a modular structure to simulate a production-ready workflow, including data ingestion, preprocessing, model training, and evaluation.
 
-**Tech stack:** Python, scikit-learn
+**Tech stack:** Python, Scikit-learn, Optuna, MLflow, Flask
 
 ---
 
@@ -35,6 +35,8 @@ This dataset contains 1000 student records with 5 categorical features and 3 num
 ## ✨ Features
 
 - End-to-end ML pipeline (ingestion → preprocessing → training → evaluation)
+- Optuna hyperparameter tuning with MLflow experiment tracking
+- YAML-driven pipeline configuration for production-ready flexibility
 - Modular and production-ready project structure
 - Web application for real-time score prediction
 - CI/CD pipeline using GitHub Actions + Render Deploy Hook
@@ -42,13 +44,32 @@ This dataset contains 1000 student records with 5 categorical features and 3 num
 
 ---
 
-## 🗂️ Repository Structure
+##   Getting Started
+
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Run the training pipeline:
+   ```bash
+   python -m src.pipeline.training_pipeline
+   ```
+3. Start the Flask app:
+   ```bash
+   python app.py
+   ```
+
+---
+
+##   ️ Repository Structure
 
 ```bash
 math-score-prediction/
 ├─ .github/
 │  └─ workflows/
-│     └─ main.yml
+│     └─ main.yaml
+├─ config/
+│  └─ config.yaml
 ├─ data/
 │  └─ StudentsPerformance.csv
 ├─ models/
@@ -62,6 +83,9 @@ math-score-prediction/
 │  │  ├─ data_ingestion.py
 │  │  ├─ data_transformation.py
 │  │  └─ model_trainer.py
+│  ├─ config/
+│  │  ├─ __init__.py
+│  │  └─ configuration.py
 │  ├─ pipeline/
 │  │  ├─ __init__.py
 │  │  ├─ prediction_pipeline.py
