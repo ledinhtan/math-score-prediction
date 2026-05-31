@@ -220,3 +220,6 @@ __marimo__/
 
 # Catboost
 catboost_info/
+
+# mlruns
+mlruns/
