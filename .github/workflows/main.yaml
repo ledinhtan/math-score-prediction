@@ -1,11 +1,12 @@
 name: CI/CD Pipeline for Math Score Prediction
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'README.md'
-      - '.gitignore'
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+  #   paths-ignore:
+  #     - 'README.md'
+  #     - '.gitignore'
   pull_request:
     branches: [main]
 
